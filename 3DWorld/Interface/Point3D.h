@@ -1,6 +1,6 @@
 ///--------------------------------------------------------------------------------------------------------------------------------------------------
 /// 文件名: Point3D.h
-/// 作者：mathsdream
+/// 作者：mathdream
 /// 
 /// 重要说明：
 /// 1.
@@ -8,9 +8,9 @@
 ///--------------------------------------------------------------------------------------------------------------------------------------------------
 
 #pragma once
-#include <vector>
 #include <cmath>
 #include <iostream>
+#include <vector>
 
 /// @brief 点的接口，描述空间中的一个点
 class Point3D
@@ -74,7 +74,9 @@ private:
 
 inline double Point3D::DistanceTo(const Point3D& point) const
 {
-    return std::sqrt((x_ - point.x_) * (x_ - point.x_) + (y_ - point.y_) * (y_ - point.y_) + (z_ - point.z_) * (z_ - point.z_));
+    return std::sqrt((x_ - point.x_) * (x_ - point.x_) +
+        (y_ - point.y_) * (y_ - point.y_) +
+        (z_ - point.z_) * (z_ - point.z_));
 }
 
 inline Point3D& Point3D::operator=(const Point3D& point)
