@@ -29,22 +29,29 @@ public:
         }
     }
 
+    /// @brief 获取线段的端点
+    /// @return         线段的端点
+    std::vector<Point3D> GetPoints() const { return points_; }
+
+    /// @brief 设置线段的其中一个端点
+    /// @param[in]      point           端点
+    /// @param[in]      index           端点的索引
+    /// @return         是否设置成功
+    bool SetPoint(Point3D point, int index = 0);
+
     /// @brief 获取线段的长度
     /// @return         线段的长度
-    double GetLength() const
-    {
-        return points_[0].DistanceTo(points_[1]);
-    }
+    double GetLength() const;
+
+    /// @brief 重载=运算符
+    /// @param[in]      line            另一个线段
+    /// @return         当前线段
+    Line3D& operator=(const Line3D& line);
 
     /// @brief 重载==运算符
     /// @param[in]      line            另一个线段
     /// @return         是否相等
-    bool operator==(const Line3D& line) const
-    {
-        return (points_[0] == line.points_[0] && points_[1] == line.points_[1]) ||
-            (points_[0] == line.points_[1] && points_[1] == line.points_[0]);
-    }
-
+    bool operator==(const Line3D& line) const;
 
 private:
 
@@ -53,3 +60,32 @@ private:
 
 };
 
+inline bool Line3D::SetPoint(Point3D point, int index)
+{
+    if (index < 0 || index > 1)
+        return false;
+    if (index == 1 && point == points_[0])
+        return false;
+    if (index == 0 && point == points_[1])
+        return false;
+    points_[index] = point;
+    return true;
+}
+
+inline double Line3D::GetLength() const
+{
+    return points_[0].DistanceTo(points_[1]);
+}
+
+inline Line3D& Line3D::operator=(const Line3D& line)
+{
+    points_[0] = line.points_[0];
+    points_[1] = line.points_[1];
+    return *this;
+}
+
+inline bool Line3D::operator==(const Line3D& line) const
+{
+    return (points_[0] == line.points_[0] && points_[1] == line.points_[1]) ||
+        (points_[0] == line.points_[1] && points_[1] == line.points_[0]);
+}

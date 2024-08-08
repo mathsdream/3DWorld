@@ -9,6 +9,7 @@ class Model3D
 
 public:
 
+    /// @brief 默认构造函数
     Model3D() {};
 
     /// @brief 添加一个顶点
@@ -24,6 +25,8 @@ public:
         points_.push_back(point);
         return true;
     }
+
+    /// @brief 添加一个线段
 
 private:
 
