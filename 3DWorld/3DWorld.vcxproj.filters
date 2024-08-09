@@ -16,6 +16,12 @@
     <Filter Include="头文件\Interface">
       <UniqueIdentifier>{c558ab49-42bb-446d-bfab-142bccadd8bb}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Importer">
+      <UniqueIdentifier>{cfc8c339-a030-4016-9852-93ebca9859b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Exporter">
+      <UniqueIdentifier>{14a8087d-6101-43ef-af70-b653d077ea7b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\Point3D.h">
@@ -29,6 +35,18 @@
     </ClInclude>
     <ClInclude Include="Interface\Model3D.h">
       <Filter>头文件\Interface</Filter>
+    </ClInclude>
+    <ClInclude Include="Importer\ImporterBase.h">
+      <Filter>头文件\Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="Importer\ObjImporter.h">
+      <Filter>头文件\Importer</Filter>
+    </ClInclude>
+    <ClInclude Include="Exporter\ExporterBase.h">
+      <Filter>头文件\Exporter</Filter>
+    </ClInclude>
+    <ClInclude Include="Exporter\ObjExporter.h">
+      <Filter>头文件\Exporter</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

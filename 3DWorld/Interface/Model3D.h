@@ -15,7 +15,7 @@
 
 /// @brief 3Dodel的接口，描述一个3D模型
 /// 其包含了一系列的顶点、线段和面
-/// 同时每个点、线段、面有着各自的索引号
+/// 同时每个点、线段、面有着各自的索引号，分别从1开始
 class Model3D
 {
 
@@ -56,6 +56,38 @@ public:
     /// @return         面的索引号（如果不存在则返回-1）
     int GetFaceIndex(Face3D face) const;
 
+    /// @brief 获取模型的顶点
+    /// @return         顶点
+    auto GetPoints() const { return points_; }
+
+    /// @brief 获取模型的线段
+    /// @return         线段
+    auto GetLines() const { return lines_; }
+
+    /// @brief 获取模型的面
+    /// @return         面
+    auto GetFaces() const { return faces_; }
+
+    /// @brief 获取模型的顶点数
+    /// @return         顶点数
+    int GetPointCount() const { return points_.size(); }
+
+    /// @brief 获取模型的线段数
+    /// @return         线段数
+    int GetLineCount() const { return lines_.size(); }
+
+    /// @brief 获取模型的面数
+    /// @return         面数
+    int GetFaceCount() const { return faces_.size(); }
+
+    /// @brief 获取线段的总长度
+    /// @return         总长度
+    double GetTotalLength() const;
+
+    /// @brief 获取面的总面积
+    /// @return         总面积
+    double GetTotalArea() const;
+
 private:
 
     /// @brief 3D模型的顶点
@@ -81,7 +113,7 @@ inline int Model3D::GetPointIndex(Point3D point) const
 {
     for (int i = 0; i < points_.size(); i++)
         if (points_[i] == point)
-            return i;
+            return i + 1;
     return -1;
 }
 
@@ -100,7 +132,7 @@ inline int Model3D::GetLineIndex(Line3D line) const
 {
     for (int i = 0; i < lines_.size(); i++)
         if (lines_[i] == line)
-            return i;
+            return i + 1;
     return -1;
 }
 
@@ -119,6 +151,22 @@ inline int Model3D::GetFaceIndex(Face3D face) const
 {
     for (int i = 0; i < faces_.size(); i++)
         if (faces_[i] == face)
-            return i;
+            return i + 1;
     return -1;
+}
+
+inline double Model3D::GetTotalLength() const
+{
+    double total_length = 0;
+    for (const Line3D& line : lines_)
+        total_length += line.GetLength();
+    return total_length;
+}
+
+inline double Model3D::GetTotalArea() const
+{
+    double total_area = 0;
+    for (const Face3D& face : faces_)
+        total_area += face.GetArea();
+    return total_area;
 }

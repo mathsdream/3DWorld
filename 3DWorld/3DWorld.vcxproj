@@ -134,6 +134,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Exporter\ExporterBase.h" />
+    <ClInclude Include="Exporter\ObjExporter.h" />
+    <ClInclude Include="Importer\ImporterBase.h" />
+    <ClInclude Include="Importer\ObjImporter.h" />
     <ClInclude Include="Interface\Face3D.h" />
     <ClInclude Include="Interface\Line3D.h" />
     <ClInclude Include="Interface\Model3D.h" />
