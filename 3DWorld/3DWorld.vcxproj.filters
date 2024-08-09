@@ -22,6 +22,12 @@
     <Filter Include="头文件\Exporter">
       <UniqueIdentifier>{14a8087d-6101-43ef-af70-b653d077ea7b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="头文件\Controller">
+      <UniqueIdentifier>{45a426c9-61a5-4aa4-b563-1920dac48e69}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="头文件\Viewer">
+      <UniqueIdentifier>{b0dd8e0a-5c22-4de2-8d5e-c31bd52064ca}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Interface\Point3D.h">
