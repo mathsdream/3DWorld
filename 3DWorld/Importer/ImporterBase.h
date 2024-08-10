@@ -36,7 +36,7 @@ public:
     virtual void Import(const std::string& path) = 0;
     
     /// @brief 导入的模型指针
-    std::shared_ptr<Model3D> model_;
+    std::shared_ptr<Model3D> model_ = nullptr;
 
     /// @brief Importer类型
     const ImporterType type_;

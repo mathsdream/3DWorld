@@ -72,6 +72,14 @@ inline void ObjImporter::Import(const std::string& path)
                     model_->GetPoints()[index2 - 1],
                     model_->GetPoints()[index3 - 1]));
             }
+            else if (line[0] == 'g')
+            {
+                std::istringstream iss(line);
+                char c;
+                std::string name;
+                iss >> c >> name;
+                model_->SetName(name);
+            }
         }
     }
 }

@@ -145,6 +145,8 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="3DWorldTest.cpp" />
+    <ClCompile Include="Controller\Controller.h" />
+    <ClCompile Include="Viewer\Viewer.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

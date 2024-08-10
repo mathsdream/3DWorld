@@ -1,31 +1,15 @@
 #include "Interface/Model3D.h"
 #include "Importer/ObjImporter.h"
 #include "Exporter/ObjExporter.h"
+#include "Viewer/Viewer.h"
 
 /// 一个程序，允许用户随意输入点、线、面，然后可以输出模型的点线面信息
 int main()
 {
-
-    auto model = std::make_shared<Model3D>();
-    auto importer = std::make_shared<ObjImporter>(model);
-    auto exporter = std::make_shared<ObjExporter>(model);
-
-    importer->Import("C:/Users/qyzt/Desktop/cube.obj");
-
-    // 输出各点线面的数量，线的总长度，面的总面积
-    std::cout << "The count of points is " << model->GetPointCount() << std::endl;
-    std::cout << "The count of lines is " << model->GetLineCount() << std::endl;
-    std::cout << "The count of faces is " << model->GetFaceCount() << std::endl;
-    std::cout << "The total length of lines is " << model->GetTotalLength() << std::endl;
-    std::cout << "The total area of faces is " << model->GetTotalArea() << std::endl;
-
-    model->AddPoint(Point3D(3, 3, 3));
-    model->AddLine(Line3D(Point3D(3, 3, 3), Point3D(4, 4, 4)));
-    std::cout << "The new count of points is " << model->GetPointCount() << std::endl;
-    std::cout << "The new count of lines is " << model->GetLineCount() << std::endl;
-
-    exporter->Export("C:/Users/qyzt/Desktop/cube2.obj");
-
+    std::shared_ptr<Model3D> model;
+    std::shared_ptr<Controller> controller = std::make_shared<Controller>(model);
+    Viewer view(controller);
+    view.MainWindow();
     return 0;
 }
 

@@ -59,5 +59,11 @@
     <ClCompile Include="3DWorldTest.cpp">
       <Filter>源文件</Filter>
     </ClCompile>
+    <ClCompile Include="Controller\Controller.h">
+      <Filter>头文件\Controller</Filter>
+    </ClCompile>
+    <ClCompile Include="Viewer\Viewer.h">
+      <Filter>头文件\Viewer</Filter>
+    </ClCompile>
   </ItemGroup>
 </Project>

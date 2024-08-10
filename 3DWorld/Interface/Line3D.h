@@ -49,6 +49,11 @@ public:
     /// @return         是否设置成功
     bool SetPoint(Point3D point, int index = 0);
 
+    /// @brief 判断某点是否为线段的端点
+    /// @param[in]      point           点
+    /// @return         是否为线段的端点
+    bool IsPointOfLine(Point3D point) const;
+
     /// @brief 获取线段的长度
     /// @return         线段的长度
     double GetLength() const;
@@ -80,6 +85,11 @@ inline bool Line3D::SetPoint(Point3D point, int index)
         return false;
     points_[index] = point;
     return true;
+}
+
+inline bool Line3D::IsPointOfLine(Point3D point) const
+{
+    return points_[0] == point || points_[1] == point;
 }
 
 inline double Line3D::GetLength() const

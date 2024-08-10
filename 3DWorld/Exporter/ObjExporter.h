@@ -36,6 +36,7 @@ inline void ObjExporter::Export(const std::string& path)
         throw std::invalid_argument("The file is not open.");
     else
     {
+        file << "g " << model_->GetName() << std::endl;
         for (const auto& point : model_->GetPoints())
             file << "v " << point.getX() << " " << point.getY() << " " << point.getZ() << std::endl;
         for (const auto& line : model_->GetLines())

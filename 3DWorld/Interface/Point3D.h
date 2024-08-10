@@ -18,6 +18,11 @@ class Point3D
 
 public:
 
+    /// @brief 默认构造函数
+    Point3D()
+        : x_(0), y_(0), z_(0)
+    {}
+
     /// @brief 构造函数
     /// @param[in]      x               点的x坐标
     /// @param[in]      y               点的y坐标

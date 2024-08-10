@@ -24,6 +24,14 @@ public:
     /// @brief 默认构造函数
     Model3D() {};
 
+    /// @brief 获取模型的名称
+    /// @return         名称
+    const std::string& GetName() const { return name_; }
+
+    /// @brief 设置模型的名称
+    /// @param[in]      name            名称
+    void SetName(const std::string& name) {}
+
     /// @brief 添加一个顶点
     /// @param[in]      point           顶点
     /// @return         是否添加成功（检查是否有重复的顶点）
@@ -55,6 +63,11 @@ public:
     /// @param[in]      face            面
     /// @return         面的索引号（如果不存在则返回-1）
     int GetFaceIndex(Face3D face) const;
+
+    /// @brief 根据索引号删去一个顶点（及相关的线段和面）
+    /// @param[in]      index           索引号
+    /// @return         是否删除成功
+    bool RemovePoint(int index);
 
     /// @brief 获取模型的顶点
     /// @return         顶点
@@ -98,6 +111,9 @@ private:
 
     /// @brief 3D模型的面
     std::vector<Face3D> faces_;
+
+    /// @brief 3D模型的名称
+    std::string name_;
 
 };
 
@@ -153,6 +169,31 @@ inline int Model3D::GetFaceIndex(Face3D face) const
         if (faces_[i] == face)
             return i + 1;
     return -1;
+}
+
+inline bool Model3D::RemovePoint(int index)
+{
+    if (index < 1 || index > points_.size())
+        return false;
+    const Point3D point = points_[index - 1];
+    points_.erase(points_.begin() + index - 1);
+    for (int i = 0; i < lines_.size(); i++)
+    {
+        if (lines_[i].IsPointOfLine(point))
+        {
+            lines_.erase(lines_.begin() + i);
+            i--;
+        }
+    }
+    for (int i = 0; i < faces_.size(); i++)
+    {
+        if (faces_[i].IsPointOfFace(point))
+        {
+            faces_.erase(faces_.begin() + i);
+            i--;
+        }
+    }
+    return true;
 }
 
 inline double Model3D::GetTotalLength() const
