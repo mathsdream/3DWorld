@@ -6,7 +6,7 @@
 /// 一个程序，允许用户随意输入点、线、面，然后可以输出模型的点线面信息
 int main()
 {
-    std::shared_ptr<Model3D> model;
+    std::shared_ptr<Model3D> model = std::make_shared<Model3D>();
     std::shared_ptr<Controller> controller = std::make_shared<Controller>(model);
     Viewer view(controller);
     view.MainWindow();

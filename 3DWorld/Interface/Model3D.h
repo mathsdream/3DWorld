@@ -22,7 +22,11 @@ class Model3D
 public:
 
     /// @brief 默认构造函数
-    Model3D() {};
+    Model3D() {
+        points_.reserve(3);
+        lines_.reserve(3);
+        faces_.reserve(3);
+    };
 
     /// @brief 获取模型的名称
     /// @return         名称
@@ -119,9 +123,12 @@ private:
 
 inline bool Model3D::AddPoint(Point3D point)
 {
-    if (GetPointIndex(point) != -1)
+    if (GetPointCount() == 0)
+        points_.push_back(point);
+    else if (GetPointIndex(point) != -1)
         return false;
-    points_.push_back(point);
+    else
+        points_.push_back(point);
     return true;
 }
 
