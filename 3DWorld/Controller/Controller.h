@@ -23,7 +23,14 @@ public:
 
     void Import(const std::string& path)
     {
-        importer_->Import(path);
+        try
+        {
+            importer_->Import(path);
+        }
+        catch(std::exception& e)
+        {
+            std::cout << e.what() << std::endl;
+        }
     }
 
     void PrintModel() const
@@ -53,6 +60,14 @@ public:
         }
     }
 
+    void AddPoint(double x, double y, double z)
+    {
+        bool success = model_->AddPoint(Point3D(x, y, z));
+        if (!success)
+        {
+            std::cout << "Add point failed!" << std::endl;
+        }
+    }
 
 private:
 
